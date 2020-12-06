@@ -9,6 +9,7 @@ import { StarfillComponent } from './starfill/starfill.component';
 import { RatingComponent } from './rating/rating.component';
 import { ProductComponent } from './product/product.component';
 import {Truncatepipe} from './truncate.pipe';
+import { JumbotronComponent } from './jumbotron/jumbotron.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {Truncatepipe} from './truncate.pipe';
     StarfillComponent,
     RatingComponent,
     ProductComponent,
-    Truncatepipe
+    Truncatepipe,
+    JumbotronComponent
   ],
   imports: [
     BrowserModule,

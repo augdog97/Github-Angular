@@ -1,0 +1,15 @@
+
+<!-- 
+    1. ng-content is an insertion point to be able to add content from the outside into the Jumbotron component.
+        - The select attribute allows to define multiple insertion points by using select=".(css class)"
+        - We are specifying that the content with the class 'heading' will be be placed in the h1 heading tag. 
+--> 
+<div class="jumbotron">
+    <h1 class="display-4"> <ng-content select=".heading"></ng-content> </h1>
+    <p class="lead"> <ng-content select=".body"></ng-content> </p>
+    <hr class="my-4">
+    <p> <ng-content select=".description"></ng-content> </p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="#" role="button"> <ng-content select=".button"></ng-content> </a>
+    </p>
+</div>
