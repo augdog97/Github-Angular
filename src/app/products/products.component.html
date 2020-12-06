@@ -3,10 +3,20 @@
 </h2>
 
     <!-- 
-        1. Writing a for loop that loops through the products array and saves the current value being itterated over in the local variable product. The array is retreived from ProductService and inputs each data element in the products array for each product component. 
+        1. Writing an if statment that says if there is more than 0 products in the array then run the for loop and render the products, else then render the ng template loading. 
+        2 Writing a for loop that loops through the products array and saves the current value being itterated over in the local variable product. The array is retreived from ProductService and inputs each data element in the products array for each product component. 
             - Each data element provides Product component with values from properties imageURL, productName, releaseData, description
-        2. We then render out each product separetly. 
+        3. We then render out each product separetly. 
+        
     -->
- <div *ngFor="let product of products">
-     <product [data]="product"></product>
- </div>
+<div *ngIf="products.length > 0; else loading">
+    <div *ngFor="let product of products">
+        <product [data]="product"></product>
+    </div>
+</div>
+<ng-template #loading>
+    <div>
+    No Products to Display!
+    </div>
+</ng-template>
+

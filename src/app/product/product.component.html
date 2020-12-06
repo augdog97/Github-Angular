@@ -2,15 +2,29 @@
 <!-- 
     1. Creating template for our products. 
         - expecting to have an object of data with the the fields URL, name, release date, and description. 
+    2. Depending on the value of data.rating, we display different comments. 
+        - We use ng switch default in the case where the value of data.rating does not match any of the cases we display a deault message.
+    3. Pipes take in an input and can transform it to the output wanted. 
+        - Added | date to releasedDate, data will now be displayed properly because of changing data in service file. 
+        - Adding parameters to the pipe to fine tune the format. 
+    4. Implementing the truncate pipe on the data.description to only view the first 10 characters. 
 -->
 <div class="media">
     <img class="mr-3" src="{{data.imageUrl}}" alt="Generic placeholder image">
     <div class="media-body">
         <h5 class="mt-0"> {{data.productName}} </h5>
-                            {{data.releaseDate}}
+                            {{data.releasedDate | date:"MM/dd/yyyy"}}
         <rating [rating]="data.rating" [numOfReviews]="data.numReviews">
         </rating>
+        <div [ngSwitch]="data.rating">
+            <div *ngSwitchCase="1">Poor</div>
+            <div *ngSwitchCase="2">Fair</div>
+            <div *ngSwitchCase="3">Good</div>
+            <div *ngSwitchCase="4">Very Good</div>
+            <div *ngSwitchCase="5">Excellent</div>
+            <div *ngSwitchCaseDefault="Not Rated"></div>
+        </div>
         <br>
-        {{data.description}}
+        {{data.description | truncate:10 }}
     </div>
 </div>

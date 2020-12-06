@@ -8,6 +8,7 @@ import { StarComponent } from './star/star.component';
 import { StarfillComponent } from './starfill/starfill.component';
 import { RatingComponent } from './rating/rating.component';
 import { ProductComponent } from './product/product.component';
+import {Truncatepipe} from './truncate.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ProductComponent } from './product/product.component';
     StarComponent,
     StarfillComponent,
     RatingComponent,
-    ProductComponent
+    ProductComponent,
+    Truncatepipe
   ],
   imports: [
     BrowserModule,
