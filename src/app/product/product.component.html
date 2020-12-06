@@ -1,0 +1,16 @@
+
+<!-- 
+    1. Creating template for our products. 
+        - expecting to have an object of data with the the fields URL, name, release date, and description. 
+-->
+<div class="media">
+    <img class="mr-3" src="{{data.imageUrl}}" alt="Generic placeholder image">
+    <div class="media-body">
+        <h5 class="mt-0"> {{data.productName}} </h5>
+                            {{data.releaseDate}}
+        <rating [rating]="data.rating" [numOfReviews]="data.numReviews">
+        </rating>
+        <br>
+        {{data.description}}
+    </div>
+</div>

@@ -1,12 +1,12 @@
 <h2>
     Products
 </h2>
-<ul>
+
     <!-- 
-        1. Writing a for loop that loops through the products array and saves the current value being itterated over in the local variable product.
-        2. We then render out each product separetly. The for loop creates a li element for each product. 
+        1. Writing a for loop that loops through the products array and saves the current value being itterated over in the local variable product. The array is retreived from ProductService and inputs each data element in the products array for each product component. 
+            - Each data element provides Product component with values from properties imageURL, productName, releaseData, description
+        2. We then render out each product separetly. 
     -->
-    <li *ngFor="let product of products">
-        {{product}}
-    </li>
-</ul>
+ <div *ngFor="let product of products">
+     <product [data]="product"></product>
+ </div>
