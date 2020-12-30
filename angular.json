@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "Github-Angular"
+  "defaultProject": "Github-Angular",
+  "cli": {
+    "analytics": false
+  }
 }

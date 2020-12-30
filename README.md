@@ -1,3 +1,11 @@
+
+Three Projects are being shown in this project. 
+1. Simple Bootstrap with a hero unit 
+2. Product list with a rating simple rating system in place
+3. Github API search
+
+
+
 # GithubAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
