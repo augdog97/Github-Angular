@@ -15,6 +15,7 @@ import {Truncatepipe} from './truncate.pipe';
 import { JumbotronComponent } from './jumbotron/jumbotron.component';
 import { GithubComponent } from './github/github.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

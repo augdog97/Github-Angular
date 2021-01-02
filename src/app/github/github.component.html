@@ -1,6 +1,28 @@
 
 <!-- 
     1. Added an input control with just the formControl directive in the input control because we dont need a form element. The formControl represents our input field. 
+    2. Show the loading div when is loading is true.
+        - Included a fontawesome spinner that is animated   
+    3. Added a for loop that creates a media object for each user
+        - Used string interpolation inside of the template. 
  -->
+
+
+
  <input type="search" class="form-control" [formControl]="searchControl">
- 
+
+ <h3>Github User Results</h3>
+<div *ngIf="isLoading">
+    <i class="fa fa-spinner fa-spin fa-3x"></i>
+</div>
+<div *ngFor="let user of users" class="media">
+    <div class="media">
+        <a href="{{user.html_url}}"></a>
+        <img class="mr-3" src="{{user.avatar_url}}" alt="User Profile Image" width="64" height="64">
+        <div class="media-body">
+            <h5 class="mt-0"> {{user.login}} </h5>
+            Score:{{user.score}}
+        </div>
+    </div>
+</div>
+

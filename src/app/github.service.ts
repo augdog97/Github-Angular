@@ -1,6 +1,6 @@
 import {HttpClient} from '@angular/common/http'
 import {Observable} from 'rxjs'
-
+import {Injectable} from '@angular/core'
 
 /**
  * 1. getGitHubData is a method that wull return GitHub data from our api end point. To call the api end point, we need to use HttpClient service of Angular. We import it with the above statment. 
@@ -15,6 +15,7 @@ import {Observable} from 'rxjs'
  *      - By specifying <GithubUser> type, we indicate the type of the reponse wrapped inside the Observable. 
  *      - We will return this Observable in our service and our component will be the consumer of this Observable. 
  *      - We will subscribe to it and when an ajax call is completed, the response is fed to the Observable and then pushed to the component.  
+ * 5. Making the Github Service available for Dependency Injection by decorating the class with the @injectable
  */
 
 export interface GithubUser {
@@ -22,8 +23,9 @@ export interface GithubUser {
     avatar_url: string;
     login: string;
     score: string;
+    items: any;
 }
-
+@Injectable()
 export class GithubService {
     constructor(private _http: HttpClient) {
 
