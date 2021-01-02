@@ -4,6 +4,7 @@ import {RouterModule, Routes} from '@angular/router'
 import {HomeComponent} from './home/home.component'
 import {NotfoundComponent} from './notfound/notfound.component'
 import {GithubComponent} from './github/github.component'
+import {PortfolioComponent} from './portfolio/portfolio.component'
 
 /**
  * 1. Import the routes and router module from the router library which provides the routing functionality.
@@ -18,5 +19,6 @@ import {GithubComponent} from './github/github.component'
 export const routing = RouterModule.forRoot([
     {path: '', component: HomeComponent},
     {path: 'Github', component: GithubComponent},
+    {path: 'Portfolio', component:PortfolioComponent},
     {path: '**', component: NotfoundComponent},
 ])

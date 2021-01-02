@@ -17,6 +17,7 @@ import { GithubComponent } from './github/github.component';
 import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { NavigationComponent } from './navigation/navigation.component';
     GithubComponent,
     HomeComponent,
     NotfoundComponent,
-    NavigationComponent
+    NavigationComponent,
+    PortfolioComponent
   ],
   imports: [
     BrowserModule,
