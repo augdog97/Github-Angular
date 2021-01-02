@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-
+import {routing} from './app.routing';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +14,9 @@ import { ProductComponent } from './product/product.component';
 import {Truncatepipe} from './truncate.pipe';
 import { JumbotronComponent } from './jumbotron/jumbotron.component';
 import { GithubComponent } from './github/github.component';
+import { HomeComponent } from './home/home.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 
 @NgModule({
@@ -26,13 +29,17 @@ import { GithubComponent } from './github/github.component';
     ProductComponent,
     Truncatepipe,
     JumbotronComponent,
-    GithubComponent
+    GithubComponent,
+    HomeComponent,
+    NotfoundComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]

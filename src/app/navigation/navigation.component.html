@@ -1,0 +1,26 @@
+
+<!-- 
+    1. Creating an unordered list for navigation
+        - We use routerLink and not the traditional href because href causes a full page reload. In  a SPA (Single page Application) we want our applicaiton to be loaded only once, as we click on different links only part of the page is refreshed with the content of the target page. This results in much faster loading of pages. 
+        - routerLink tells our routing component to navigate the user to the target route specified. 
+            - The routing component finds the route defintion with that name. It will tehn create an instance of the component and render it in the router-outlet> element
+        - If we try to navigate to a page that doesnt exist then we will get a not found because of the wildcard route to point to the Not Found Component. 
+-->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="Github">Github</a>
+            </li>
+        </ul>
+    </div>
+</nav>
