@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
-import {routing} from './app.routing';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,18 +11,26 @@ import { RatingComponent } from './rating/rating.component';
 import { ProductComponent } from './product/product.component';
 import {Truncatepipe} from './truncate.pipe';
 import { JumbotronComponent } from './jumbotron/jumbotron.component';
-import { GithubComponent } from './github/github.component';
 import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
-import { GitHubUserComponent } from './git-hub-user/git-hub-user.component';
-import { LoginComponent } from './login/login.component';
 
-/** Services */
-import {LoginService} from './login.service';
-import {AuthGuard} from './auth-guard.service';
-import {PreventUnsavedChanges} from './prevent-unsaved-changes-guards.service';
+/** Modules */
+import {GitHubModule} from './github/github.module'
+import {LoginModule} from './login/login.module'
+
+/* Routing */
+import { routing } from './app.routing'
+import {GitHubRouting} from './github/github.routing'
+
+/**
+ * 1. Removed the components and imports and providers for login and Github becasue they where moved to their respective modules.
+ * 2. Refracted Appmodule so the code is cleaner. We will import more modules into the app.
+ *  - We can now add to our githubModule and login module and have them grow independently. 
+ * 3. Impored routing and also GitHubRouting file.
+ *  - GithubRouting comes before the app routing in the imports array because if not then Github and Githubuser would be directed to Not Found
+ */
 
 @NgModule({
   declarations: [
@@ -36,22 +42,20 @@ import {PreventUnsavedChanges} from './prevent-unsaved-changes-guards.service';
     ProductComponent,
     Truncatepipe,
     JumbotronComponent,
-    GithubComponent,
     HomeComponent,
     NotfoundComponent,
     NavigationComponent,
-    PortfolioComponent,
-    GitHubUserComponent,
-    LoginComponent
+    PortfolioComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    routing
+    GitHubModule,
+    GitHubRouting,
+    routing,
+    LoginModule
   ],
-  providers: [LoginService, AuthGuard, PreventUnsavedChanges],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

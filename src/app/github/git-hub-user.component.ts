@@ -23,8 +23,8 @@ export class GitHubUserComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscription = this._route.params.subscribe(params => {
-      this.login = params['login'];
-      this.score = params['score'];
+      this.login = params["login"];
+      this.score = params["score"];
     })
   }
 

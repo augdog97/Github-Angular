@@ -3,14 +3,12 @@ import {RouterModule, Routes} from '@angular/router'
 
 import {HomeComponent} from './home/home.component'
 import {NotfoundComponent} from './notfound/notfound.component'
-import {GithubComponent} from './github/github.component'
 import {PortfolioComponent} from './portfolio/portfolio.component'
-import {GitHubUserComponent} from './git-hub-user/git-hub-user.component'
 import {LoginComponent} from './login/login.component'
 
 /** Services */
-import { AuthGuard } from './auth-guard.service'
-import {PreventUnsavedChanges} from './prevent-unsaved-changes-guards.service'
+import { AuthGuard } from './login/auth-guard.service'
+import {PreventUnsavedChanges} from './login/prevent-unsaved-changes-guards.service'
 
 
 /**
@@ -30,8 +28,6 @@ import {PreventUnsavedChanges} from './prevent-unsaved-changes-guards.service'
 
 export const routing = RouterModule.forRoot([
     {path: '', component: HomeComponent, canActivate:[AuthGuard]},
-    {path: 'Github', component: GithubComponent, canActivate:[AuthGuard]},
-    {path: 'GitHub/user/:login/:score', component: GitHubUserComponent, canActivate:[AuthGuard]},
     {path: 'login', component: LoginComponent, canDeactivate:[PreventUnsavedChanges]},
     {path: 'Portfolio', component:PortfolioComponent},
     {path: '**', component: NotfoundComponent},

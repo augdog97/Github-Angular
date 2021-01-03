@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {filter, debounceTime, distinctUntilChanged} from 'rxjs/operators';
-import { GithubService } from '../github.service';
+import { GithubService } from './github.service';
 /**
  * 1. formControl class has a proprty valueChanges which returns an overservable. 
  *  - Apply the filter method so that we will only call Github if the value in the input field is more than 3 characters long.

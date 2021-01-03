@@ -20,7 +20,7 @@
 </div>
 <div *ngFor="let user of users" class="media">
     <div class="media">
-      <a [routerLink]="['user', user.login, user.score]">
+      <a [routerLink]="['user',user.login,user.score]">
         <img class="mr-3" src="{{user.avatar_url}}" alt="User Profile Image" width="64" height="64">
         </a>
         <div class="media-body">
