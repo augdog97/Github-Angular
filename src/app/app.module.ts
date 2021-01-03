@@ -18,7 +18,13 @@ import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
+import { GitHubUserComponent } from './git-hub-user/git-hub-user.component';
+import { LoginComponent } from './login/login.component';
 
+/** Services */
+import {LoginService} from './login.service';
+import {AuthGuard} from './auth-guard.service';
+import {PreventUnsavedChanges} from './prevent-unsaved-changes-guards.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +40,9 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
     HomeComponent,
     NotfoundComponent,
     NavigationComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    GitHubUserComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +51,7 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
     HttpClientModule,
     routing
   ],
-  providers: [],
+  providers: [LoginService, AuthGuard, PreventUnsavedChanges],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

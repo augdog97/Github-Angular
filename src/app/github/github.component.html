@@ -5,6 +5,9 @@
         - Included a fontawesome spinner that is animated   
     3. Added a for loop that creates a media object for each user
         - Used string interpolation inside of the template. 
+    4. Added a routerLink to the user image of each search result. When a user clicks on the user image, they will be routed to GitHubUserComponent with parameters login and score. 
+        - Used property binding syntax to bind our route parameters array to routerLink.
+            - '['user', user.login, user.score]' is the route parameters array. The first element is a string which contains our path 'user'. 2nd element and 3rd element are the route parameters values.
  -->
 
 
@@ -17,8 +20,9 @@
 </div>
 <div *ngFor="let user of users" class="media">
     <div class="media">
-        <a href="{{user.html_url}}"></a>
+      <a [routerLink]="['user', user.login, user.score]">
         <img class="mr-3" src="{{user.avatar_url}}" alt="User Profile Image" width="64" height="64">
+        </a>
         <div class="media-body">
             <h5 class="mt-0"> {{user.login}} </h5>
             Score:{{user.score}}

@@ -26,7 +26,7 @@ import { GithubService } from '../github.service';
  */
 
 @Component({
-  selector: 'app-github',
+  selector: 'github',
   templateUrl: './github.component.html',
   styleUrls: ['./github.component.css'],
   providers: [GithubService]
