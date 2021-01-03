@@ -9,6 +9,7 @@ import {AngularFireAnalyticsModule} from '@angular/fire/analytics';
 import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/firestore';
 
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './products/products.component';
@@ -22,6 +23,9 @@ import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
+import { UserComponent } from './user/user.component';
+import { UserFormComponent } from './user-form/user-form.component';
+import { GithubLoginComponent } from './github-login/github-login.component'
 
 /** Modules */
 import {GitHubModule} from './github/github.module'
@@ -30,8 +34,9 @@ import {LoginModule} from './login/login.module'
 /* Routing */
 import { routing } from './app.routing'
 import {GitHubRouting} from './github/github.routing';
-import { UserComponent } from './user/user.component';
-import { UserFormComponent } from './user-form/user-form.component'
+
+/** Services */
+import {GitHubLoginService} from './github-login.service'
 
 /**
  * 1. Removed the components and imports and providers for login and Github becasue they where moved to their respective modules.
@@ -56,7 +61,8 @@ import { UserFormComponent } from './user-form/user-form.component'
     NavigationComponent,
     PortfolioComponent,
     UserComponent,
-    UserFormComponent
+    UserFormComponent,
+    GithubLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -68,9 +74,9 @@ import { UserFormComponent } from './user-form/user-form.component'
     LoginModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAnalyticsModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
   ],
-  providers: [],
+  providers: [GitHubLoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

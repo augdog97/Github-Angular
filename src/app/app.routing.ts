@@ -7,7 +7,7 @@ import {PortfolioComponent} from './portfolio/portfolio.component'
 import {LoginComponent} from './login/login.component'
 import {UserComponent} from './user/user.component'
 import {UserFormComponent} from './user-form/user-form.component'
-
+import {GithubLoginComponent } from './github-login/github-login.component'
 /** Services */
 import { AuthGuard } from './login/auth-guard.service'
 import {PreventUnsavedChanges} from './login/prevent-unsaved-changes-guards.service'
@@ -32,6 +32,8 @@ import {PreventUnsavedChanges} from './login/prevent-unsaved-changes-guards.serv
 export const routing = RouterModule.forRoot([
     {path: '', component: HomeComponent, canActivate:[AuthGuard]},
     {path: 'login', component: LoginComponent, canDeactivate:[PreventUnsavedChanges]},
+    { path: 'hub/login', component: GithubLoginComponent},
+    { path: 'hub/login/:invalidLoginMessage', component: GithubLoginComponent},
     {path: 'Portfolio', component:PortfolioComponent},
     {path: 'Users', component: UserComponent},
     {path: 'add', component:UserFormComponent},
