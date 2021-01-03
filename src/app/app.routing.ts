@@ -5,6 +5,8 @@ import {HomeComponent} from './home/home.component'
 import {NotfoundComponent} from './notfound/notfound.component'
 import {PortfolioComponent} from './portfolio/portfolio.component'
 import {LoginComponent} from './login/login.component'
+import {UserComponent} from './user/user.component'
+import {UserFormComponent} from './user-form/user-form.component'
 
 /** Services */
 import { AuthGuard } from './login/auth-guard.service'
@@ -24,11 +26,15 @@ import {PreventUnsavedChanges} from './login/prevent-unsaved-changes-guards.serv
  * 4. Imported and add the parameter canActivate to the signup route. 
  *  - canActivate takes in an array of guards, which means we can apply multiple guards to a given route if needed. 
  *  - If the first one returns false, then the execution stops there. Otherwise control is passed to the next guard. 
+ * 5. Added add/:id route with id being a parameter as shown. id will contain our user object id used to retreive our user object and populate the Edit form.
  */
 
 export const routing = RouterModule.forRoot([
     {path: '', component: HomeComponent, canActivate:[AuthGuard]},
     {path: 'login', component: LoginComponent, canDeactivate:[PreventUnsavedChanges]},
     {path: 'Portfolio', component:PortfolioComponent},
+    {path: 'Users', component: UserComponent},
+    {path: 'add', component:UserFormComponent},
+    { path: 'add/:id', component: UserFormComponent },
     {path: '**', component: NotfoundComponent},
 ])

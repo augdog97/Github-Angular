@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "github-angular-9e283": {
+      "hosting": {
+        "Github-Angular": [
+          "github-angular-9e283"
+        ]
+      }
+    }
+  }
+}

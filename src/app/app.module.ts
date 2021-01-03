@@ -1,5 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {ReactiveFormsModule} from '@angular/forms';
+
+/* Firebase */
+import {AngularFireModule} from '@angular/fire'
+import {environment} from '../environments/environment'
+import {AngularFireAnalyticsModule} from '@angular/fire/analytics';
+import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/firestore';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,7 +29,9 @@ import {LoginModule} from './login/login.module'
 
 /* Routing */
 import { routing } from './app.routing'
-import {GitHubRouting} from './github/github.routing'
+import {GitHubRouting} from './github/github.routing';
+import { UserComponent } from './user/user.component';
+import { UserFormComponent } from './user-form/user-form.component'
 
 /**
  * 1. Removed the components and imports and providers for login and Github becasue they where moved to their respective modules.
@@ -45,15 +54,21 @@ import {GitHubRouting} from './github/github.routing'
     HomeComponent,
     NotfoundComponent,
     NavigationComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    UserComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     GitHubModule,
     GitHubRouting,
     routing,
-    LoginModule
+    LoginModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAnalyticsModule,
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
