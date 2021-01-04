@@ -2,6 +2,11 @@
 <!-- 
     1. Using the class definitions that where defined in the select attributes in jumbotron HTML.
         - Text below  is rendered within the proper insertion point in the component.
+    2. At the bottom we are displaying a navigation bar that is modified from Bootstrap.
+        - the Logout link calls the onLogout() method which in turn calls the logout() method in Login Service.
+        - Using ngIf, we show the Logout link only when isLoggedIn is true.
+        - Note that we need to apply the async pipe as isLoggedIn is an Observable which emits boolean values. Remeber that the async pipe subscribes/unsubscribes to/from the Observable automatically and is considered a best practice by the Angular Communtiy. 
+        - We show the Login and Sign up links with their router links when isLoggedIn is false.
 -->
 <bs-jumbotron> 
     <div class="heading">
@@ -21,7 +26,22 @@
 <products></products>
 
 <br>
-
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" (click)="onLogout()" *ngIf="isLoggedIn | async">Logout<span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="login" *ngIf="!(isLoggedIn | async)">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="signup" *ngIf="!(isLoggedIn | async)">Sign Up</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 <app-navigation> </app-navigation>
 <br>
 

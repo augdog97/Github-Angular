@@ -3,6 +3,8 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import {Router} from '@angular/router';
 import { map, catchError } from 'rxjs/operators';
 
+import {GitHubLoginService} from '../github-login.service';
+
 /**
  * 1. Import AngularFirestore and AngularFirestoreCollection. AngularFirestoreCollection is to interact with either the collections which store documents or to retreive specific documents.
  * 2. We define a User interface  which helps us determine the structure of the data associated with our users collection
@@ -15,6 +17,7 @@ import { map, catchError } from 'rxjs/operators';
  * 7. In the delete method we first show a confirmation box asking for confirmation to delete. If true we call the delete method of this.afs.
  *  - the doc() method allows us to get on single specific document from firebase.  We need to specift the location of the data in firebase as arguments to doc(). In this case the locaiton of the obejct is container in the "users" colleciton with document id. The user id is a unique key generated for us by firebase whenever we add a document to firebase. The whole idea is to use this unique key to retreive the object for deletion. 
  *  - Having specified the target object using doc() we call the delete() methode to remove it from firebase. 
+ * 8. In the delete method similar to what we do in the user form, we retreive the loggedInUser from the Login Service to access the loggedInUser clients collection in ngOnInit. We do the sam,e to access the client document in delete().
  */
 
 interface User {
@@ -31,10 +34,10 @@ export class UserComponent implements OnInit {
   usersCol: AngularFirestoreCollection<User>;
   users: any;
 
-  constructor(private afs: AngularFirestore, private _router: Router) { }
+  constructor(private afs: AngularFirestore, private _router: Router, private _loginService: GitHubLoginService) { }
 
   ngOnInit(){
-    this.usersCol = this.afs.collection('users');
+    this.usersCol = this.afs.collection('users/' + this._loginService.loggedInUser + '/clients');
     this.users = this.usersCol.snapshotChanges()
     .pipe(
       map(actions => {
@@ -51,7 +54,7 @@ export class UserComponent implements OnInit {
   }
   delete(userId, name) {
     if(confirm('Are you sure you want to delete this user?' + name + '?')) {
-      this.afs.doc('users/' + userId).delete();
+      this.afs.doc('users/' + this._loginService.loggedInUser + '/clients/' + userId).delete();
     }
   }
 }

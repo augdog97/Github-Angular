@@ -7,6 +7,8 @@ import {User} from '../user'
 import {Observable} from 'rxjs'
 import { Title } from '@angular/platform-browser';
 
+import {GitHubLoginService} from '../github-login.service'
+
 /**
  * 1. Creating a model driven form.
  * 2. Important to initialize 'user' to be a blank User object. This is to avoid any null reference exception that might occur in the loading of the form; either when we add a new user or later when we reuse the form again to edit an existing user.
@@ -26,6 +28,10 @@ import { Title } from '@angular/platform-browser';
     - We then call userDoc.valueChanges which returns an Observable which we assign to singleUser. 
     - We subscribe to singleUser which returns our requested user object in a call back. 
     - When we have our requested user object, we then assign the user values to the usrname and email form field values to populate our edit form. 
+  8. We include the logged in user id and append it to the document location in ngOnInit. 
+    - this.userDoc ... this._loginService.loggedInUser retreives the existing client document data to populate it in the form. 
+    - In the submit method we similarly include the logged in user id to the client document to update an existing client document. 
+    - The same applies when we add a client document by doing .doc in the else of the submit method. 
  */
 
 
@@ -43,7 +49,7 @@ export class UserFormComponent implements OnInit {
   userDoc: AngularFirestoreDocument<User>;
   singleUser: Observable<User>;
 
-  constructor(fb: FormBuilder, private _router: Router, private _route: ActivatedRoute, private afs: AngularFirestore) {
+  constructor(fb: FormBuilder, private _router: Router, private _route: ActivatedRoute, private afs: AngularFirestore, private _loginService: GitHubLoginService) {
     this.form = fb.group({
       username:["", Validators.required],
       email:["", Validators.required]
@@ -59,7 +65,7 @@ export class UserFormComponent implements OnInit {
       this.title = "New User"
     } else {
       this.title = "Edit User"
-      this.userDoc = this.afs.doc('users/' + this.id);
+      this.userDoc = this.afs.doc('users/' + this._loginService.loggedInUser + "/clients/" + this.id);
       this.singleUser = this.userDoc.valueChanges();
       this.singleUser.subscribe((user) => {
         this.form.get('username').setValue(user.name);
@@ -69,13 +75,16 @@ export class UserFormComponent implements OnInit {
   }
   submit() {
     if (this.id) {
-      this.afs.doc('users/' + this.id).update({
+      this.afs.doc('users/' + this._loginService.loggedInUser + "/clients/" + this.id).update({
         name: this.user.name,
         email: this.user.email
       });;
     }
     else {
-      this.afs.collection('users').add({
+      this.afs.collection('users')
+      .doc(this._loginService.loggedInUser)
+      .collection("clients")
+      .add({
         name: this.user.name,
         email: this.user.email
       });

@@ -36,7 +36,9 @@ import { routing } from './app.routing'
 import {GitHubRouting} from './github/github.routing';
 
 /** Services */
-import {GitHubLoginService} from './github-login.service'
+import {GitHubLoginService} from './github-login.service';
+import { SignupComponent } from './signup/signup.component'
+import {authGuard} from './auth.guard'
 
 /**
  * 1. Removed the components and imports and providers for login and Github becasue they where moved to their respective modules.
@@ -62,7 +64,8 @@ import {GitHubLoginService} from './github-login.service'
     PortfolioComponent,
     UserComponent,
     UserFormComponent,
-    GithubLoginComponent
+    GithubLoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +79,7 @@ import {GitHubLoginService} from './github-login.service'
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
   ],
-  providers: [GitHubLoginService],
+  providers: [GitHubLoginService, authGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
