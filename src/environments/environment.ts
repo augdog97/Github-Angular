@@ -1,18 +1,16 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-require('dotenv').config();
-
 export const environment = {
   production: false,
   firebase: {
-    apiKey: process.env.apiKey,
-    authDomain: process.env.authDomain,
-    projectId: process.env.projectId,
-    storageBucket: process.env.storageBucket,
-    messagingSenderId: process.env.messagingSenderId,
-    appId: process.env.appId,
-    measurementId: process.env.measurementId
+    apiKey: "AIzaSyBZLtvaEhUQ3Uq23iNQlPBFDfkUxh1SIws",
+    authDomain: "github-angular-9e283.firebaseapp.com",
+    projectId: "github-angular-9e283",
+    storageBucket: "github-angular-9e283.appspot.com",
+    messagingSenderId: "856456073125",
+    appId: "1:856456073125:web:8cf87aa52d8972e0a9224c",
+    measurementId: "G-VCH2C4LLEE"
   }
 };
 
