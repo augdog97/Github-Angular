@@ -4,8 +4,6 @@
 /dist
 /tmp
 /out-tsc
-/src/environments
-.env
 # Only exists if Bazel was run
 /bazel-out
 
