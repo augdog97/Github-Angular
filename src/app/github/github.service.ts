@@ -4,7 +4,7 @@ import {Injectable} from '@angular/core'
 
 /**
  * 1. getGitHubData is a method that wull return GitHub data from our api end point. To call the api end point, we need to use HttpClient service of Angular. We import it with the above statment. 
- * 2. Declare GitHubUser interface. The interface is used to descrive the expected type of response returned from GitHub. 
+ * 2. Declare GitHubUser interface. The interface is used to describe the expected type of response returned from GitHub. 
  *  - We are only extracting the html_url, avatar_url, login, and score fields.
  * 3. Injected the HttpClient into the constructor using dependency injection. 
  *  - let Angular create an instance of the the HTTPClient class for us and give it to us.
