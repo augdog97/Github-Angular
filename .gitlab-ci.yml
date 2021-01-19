@@ -15,8 +15,8 @@ docker-build:
   - TF="$TP/environment.prod.ts"
   - PE="$TP/environment.ts"
   - mkdir -p "$TP"
-  - printf "export const environment = { \n\t production:true,\n\t youtube:'%s' \n};\n" "$youtube" > "$TF"
-  - printf "export const environment = { \n\t production:false,\n\t youtube:'%s' \n};\n" "$youtube" > "$PE"
+  - printf "export const environment = { \n\t production:true,\n\t firebase:{\n\t apiKey:"$apiKey",\n\t authDomain:"$authDomain",\n\t projectId:"$projectId",\n\t storageBucket:"$storageBucket",\n\t messagingSenderId:"$messagingSenderId",\n\t  appId:"$appId",\n\t measurementId:"$measurementId"}\n  };\n" > "$TF"
+  - printf "export const environment = { \n\t production:true,\n\t firebase:{\n\t apiKey:"$apiKey",\n\t authDomain:"$authDomain",\n\t projectId:"$projectId",\n\t storageBucket:"$storageBucket",\n\t messagingSenderId:"$messagingSenderId",\n\t  appId:"$appId",\n\t measurementId:"$measurementId"}\n  };\n" > "$PE"
   - docker build -f Dockerfile --iidfile imageid.txt -t registry.heroku.com/angular-gitlab-test/my-app .
   - docker login -u _ -p $HEROKU_TOKEN registry.heroku.com
   - docker push registry.heroku.com/angular-gitlab-test/my-app
