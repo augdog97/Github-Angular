@@ -1,3 +1,4 @@
+#Using print f to make the firebase api object
 image: docker:latest
 services:
   - docker:dind
